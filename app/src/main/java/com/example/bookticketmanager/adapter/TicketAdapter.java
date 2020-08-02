@@ -3,6 +3,7 @@ package com.example.bookticketmanager.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,6 +87,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.DataViewHo
         holder.txtTicketTime.setText(ticket.getTicketTime());
         holder.txtTicketAmount.setText(String.valueOf(ticket.getListSeat().size()));
         holder.txtInfoCustomer.setText(ticket.getCustomerName() + " - " + ticket.getCustomerPhone());
+        Log.d("customerPhone-adapter", ticket.getCustomerName() + " - " + ticket.getCustomerPhone());
         holder.txtTicketPrice.setText(formatterPrice.format(ticket.getTicketPrice()) + " vnđ");
 
         holder.imgMoreInfo.setOnClickListener(new View.OnClickListener() {

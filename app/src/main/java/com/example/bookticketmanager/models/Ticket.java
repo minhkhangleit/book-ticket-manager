@@ -42,7 +42,7 @@ public class Ticket {
     }
 
     public String getCustomerPhone() {
-        return customerPhone;
+        return this.customerPhone;
     }
 
     public String getCustomerAddress() {
