@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@+id/cardViewTicket"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="90dp"
+    android:layout_width="match_parent"
+    android:background="@color/colorDarkPrimary"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/cardViewMargin"
+    card_view:cardCornerRadius="@dimen/cardCornerRadius"
+    card_view:cardElevation="@dimen/cardElevation">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorDarkPrimary"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingRight="8dp"
+            android:layout_weight="1.25">
+            <ImageView
+                android:id="@+id/imgViewTicket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/avenger_movies"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNameMovie"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:text="@string/lblTitleMovies"
+                android:textColor="@color/colorWhite"
+                android:singleLine="true"
+                android:textSize="@dimen/txtTitleItem" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="12"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <!--  icon calendar-->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="5dp"
+                    android:src="@drawable/purple_calendar" />
+
+                <!--  icon clock-->
+                <TextView
+                    android:id="@+id/txtTicketDate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:text="May 10 - 2020"
+                    android:textColor="@color/colorWhite" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="5dp"
+                    android:src="@drawable/purple_clock" />
+
+                <TextView
+                    android:id="@+id/txtTicketTime"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:gravity="center"
+                    android:text="3 : 02"
+                    android:textColor="@color/colorWhite" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="5dp"
+                    android:src="@drawable/purple_ticket_icon" />
+
+                <TextView
+                    android:id="@+id/txtTicketAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:text="20"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="10"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.75"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/icon_infomation"/>
+                <TextView
+                    android:id="@+id/txtInfoCustomer"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7.75"
+                    android:gravity="center"
+                    android:text="Lê Minh Khang - 0985293047"
+                    android:textColor="@color/colorWhite" />
+                <ImageView
+                    android:id="@+id/btnMoreInfo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/more_info"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:weightSum="10"
+                android:layout_weight="1" >
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.75"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/icon_price"/>
+                <TextView
+                    android:id="@+id/txtPriceTicket"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9.25"
+                    android:paddingLeft="15dp"
+                    android:text="250000 vnđ"
+                    android:textColor="@color/colorPrice" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.75">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/btnRemove"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/icon_delete_512"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/btnChecked"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/icon_checked"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Book Ticket Manager</string>
+    <string name="advanceTickets">Advance Tickets</string>
+    <string name="shipTickets">Ship Tickets</string>
+    <string name="authenticTickets">Authentic Tickets</string>
+    <string name="lblTitleMovies">Avengers: Endgame</string>
+</resources>
