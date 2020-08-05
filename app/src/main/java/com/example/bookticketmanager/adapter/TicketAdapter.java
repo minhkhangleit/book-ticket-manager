@@ -18,11 +18,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bookticketmanager.R;
 import com.example.bookticketmanager.models.DownloadImageTask;
 import com.example.bookticketmanager.models.Ticket;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.DataViewHolder>{
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private ArrayList<Ticket> tickets;
     private Context context;
@@ -117,30 +123,69 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.DataViewHo
         holder.btnRemoveTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // tickets.remove(position);
-                tickets.remove(position);
-
                 //Remove firebasee by ticketID
-
-                notifyDataSetChanged();
-                Toast.makeText(context, "Remove ticket done!", Toast.LENGTH_SHORT).show();
+                db.collection("tickets")
+                        .document(tickets.get(position).getTicketID())
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // tickets.remove(position);
+                                tickets.remove(position);
+                                notifyDataSetChanged();
+                                Toast.makeText(context, "Remove ticket done!", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(context, "Remove ticket FAIL!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 
         if(statusTickets == 2){
-            holder.btnChecked.setVisibility(View.GONE);
+//            holder.btnChecked.setVisibility(View.GONE);
+            //Change checked firebasee by ticketID
+            //Set status = 0
+            holder.btnChecked.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Change checked firebasee by ticketID
+                    //Set status = 1
+                    db.collection("tickets")
+                            .document(tickets.get(position).getTicketID())
+                            .update("paymentStatus", 0)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    // holder.btnChecked.setVisibility(View.GONE);
+                                    tickets.remove(position);
+                                    notifyDataSetChanged();
+                                    Toast.makeText(context, "The ticket has been Confirmed successfully!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+            });
         }else{
             holder.btnChecked.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // tickets.remove(position);
-                    tickets.remove(position);
-
                     //Change checked firebasee by ticketID
                     //Set status = 1
-
-                    notifyDataSetChanged();
-                    Toast.makeText(context, "The ticket has been confirmed successfully!", Toast.LENGTH_SHORT).show();
+                    db.collection("tickets")
+                            .document(tickets.get(position).getTicketID())
+                            .update("paymentStatus", 1)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    // tickets.remove(position);
+                                    tickets.remove(position);
+                                    notifyDataSetChanged();
+                                    Toast.makeText(context, "The ticket has been Confirmed successfully!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }
             });
         }

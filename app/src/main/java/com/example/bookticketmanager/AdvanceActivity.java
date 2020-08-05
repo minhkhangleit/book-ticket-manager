@@ -75,6 +75,7 @@ public class AdvanceActivity extends AppCompatActivity {
                         if (ticketPayType == 1) ticket.setCustomerAddress(document.get("customerAddress").toString());
 
                         listTicket.add(ticket);
+                        Log.d("triet-test", document.getId() + " => " + document.getData());
                     }
                     LinearLayoutManager layoutManager = new LinearLayoutManager(AdvanceActivity.this);
                     layoutManager.setOrientation(RecyclerView.VERTICAL);
